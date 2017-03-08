@@ -1,0 +1,20 @@
+language: java
+
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+
+branches:
+  only:
+    - master
+
+matrix:
+  include:
+#    - jdk: openjdk6
+#    - jdk: oraclejdk7
+    - jdk: oraclejdk8
+
+install: ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: ./mvnw test -B
